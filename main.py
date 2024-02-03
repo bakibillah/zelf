@@ -32,20 +32,20 @@ class ScrapeInstaStory:
         * We used requests library here as HTTP Client but it will be detected as bot by cloudflare or akamai. They check
         TLS Fingerprint, to spoof tls fingerprint we can use requests_tls library. Here i used requests as Instagram does
         not check tls fingerprint, so i faced no blocj here.
-        * For instagram we can intercept Instagram android network traffic and extract the access_token and using the API
+        * For instagram we can intercept Instagram android network traffic and extract the access_token and use the API
         directly. for most of the cases it will be much faster and CPU-Memory efficient
         * Here the chrome opening code is valid for debian based Linux distros. for Mac and Windows there will be sightly
         different command
-        * Here i used incognito mode of the chrome to demonstrate a login flow but in the production environment we may
+        * Here i used the incognito mode of chrome to demonstrate a login flow but in the production environment we may
          not use incognito mode as we will save our profile path and reuse them
-         * Here I used a chrome profile that has already been opened at least one. if you set the chrome profile path to something
+         * Here I used a chrome profile that has already been opened at least once. if you set the chrome profile path to something
          else or run the code on a machine where this profile ($HOME/insta-scraper) has not been opened at least once then
-         first run of the code will not work. from the second run it will work. this issue can be overcomed by opening
+         first run of the code will not work. from the second run, it will work. this issue can be overcome by opening
          a headless chrome then close it then again open it but i skipped that implementation here. So if you run this code
          in a new machine please either set ($HOME/profile) to your profile path that has already been opened once or
-         first run the code then stop the code and run it again. I think handling various chrome initial pop up is out of
+         first run the code then stop the code and run it again. I think handling various chrome initial pop-ups is out of scope of 
          this task.
-         * In the production environment we will once login and save the cookies and will continue to use untill that gets
+         * In the production environment we will once login and save the cookies and will continue to use them until those cookies gets
          invalidated
         """
         command = ("google-chrome --user-data-dir=$HOME/insta-scraper --incognito --remote-debugging-port=9222 "
