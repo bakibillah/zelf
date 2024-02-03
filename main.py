@@ -185,7 +185,7 @@ class ScrapeInstaStory:
                          "Accept-Language": "en-US,en;q=0.9", "Priority": "u=0, i"}
         res_dtsg = self.session.get(url2, headers=headers2, cookies=self.cookie_header)
 
-        regex_pattern = r'"token":"(.*?)"'
+        regex_pattern = r'"DTSGInitialData".*?"token":"(.*?)"'
 
         match = re.search(regex_pattern, res_dtsg.text)
 
